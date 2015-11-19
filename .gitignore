@@ -1,0 +1,12 @@
+
+*.log
+
+*.toc
+
+*.gz
+
+*.out
+
+*.dvi
+
+*.aux
