@@ -146,8 +146,9 @@ Tomando que $kl=\theta$ obtenemos la expresión de la distribución de Poisson:
 $$Poisson(\theta)=f(x|\theta)=\dfrac{e^{-\theta}\theta^x}{x!},\ \ \ x=0,1...$$
 Tiene un único parámetro $\theta$ se suele denominar parámetro de intensidad, y se aplica sobre una variable aleatoria $X$.
 \section{Función generatriz de momentos}
+Para definir la función generatriz de momentos es importante ver que se verifica que $e^x=\sum_{i=0}^{\infty}\frac{x^i}{i!}$ es la serie de Taylor para $e^x$.
 La función generatriz de momentos se define como sigue:
-$$\phi(t)=E[e^{-tX}]=\sum_{x=0}^{\inf}e^{-t x}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\inf}e^{t x}\frac{\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\inf}\frac{(\theta e^t)^x}{x!}=e^{-\theta}e^{\theta e^t}=e^{\theta(e^t-1)}$$
+$$\phi(t)=E[e^{-tX}]=\sum_{x=0}^{\infty}e^{-t x}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}e^{t x}\frac{\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}\frac{(\theta e^t)^x}{x!}=e^{-\theta}e^{\theta e^t}=e^{\theta(e^t-1)}$$
 \subsection{Esperanza}
 Para el calculo de la esperanza tan solo debemos derivar la función generatriz de momentos una vez y evaluarla con t=0:
 $$\frac{\partial\phi}{\partial t} = \theta e^t e^{\theta(e^t-1)}$$
