@@ -131,13 +131,39 @@ Lothar Soto Palma} % Author
 \pagebreak
 \section{Deducción de función de densidad}
 La distribución de Poisson expresa a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto periodo de tiempo. Se especializa en la probabilidad de ocurrencia de sucesos con probabilidades pequeñas. Es una distribución que sirve para modelar diferentes tipos de experimentos, como fenómenosen los que se espera que ocurra un suceso en específico como esperar el bus, o la llegada de clientes en deternimado servicio.
-La distribución de Poisson tiene un único parámetro $\theta$ se suele denominar parámetro de intensidad, y se aplica sobre una variable aleatoria $X$, la función de distribución se define:
+
+La distribución de Poisson es un caso particular del limite de la distribución binomial, podemos deducirlo de la siguiente representación geométrica:\\
+\begin{center}
+\includegraphics[scale=0.6]{1.png} 
+\end{center}
+Tomamos $AB$ como el segmento de longitud $L$ y $CD$ el segmento de longitud $l$ contenido en $AB$, la probabilidad de que un punto se encuentre en $CD$ es $l/L$. Sitomamos n puntos aleatorios en $AB$ la probabilidad de que exactamente $x$ de ellos esten en $CD$ viene dada por una distribución binomial:
+$$B(x|\frac{l}{L},n)=\frac{n!}{x!(n-x)!}(\frac{l}{L})^x(1-\frac{l}{L})^{n-x}$$
+n y L crecen indefinidamente de tal manera que el número promedio de puntos por unidad de longitud es un número finito $k \neq 0$, $\frac{n}{L}\rightarrow k$.
+$$B(x|\frac{l}{L},n)=\frac{n(n-1)...(n-x+1)}{x!n^x}(\frac{nl}{L})^x(1-\frac{n}{L}\frac{l}{n})^{n-x}$$
+asi que el limite de $B(x|\frac{l}{L},n)$ cuando $n,L\rightarrow \infty$:
+$$\lim_{n,L\rightarrow \infty}B(x|\frac{l}{L},n) = \lim_{n,L\rightarrow \infty}\frac{1(1-\frac{1}{n})...(1-x+1\frac{x+1}{n})}{x!}(\frac{nl}{L})^x(1-\frac{n}{L}\frac{l}{n})^{n-x}=\frac{(kl)^xe^{-kl}}{x!}$$
+Tomando que $kl=\theta$ obtenemos la expresión de la distribución de Poisson:
 $$Poisson(\theta)=f(x|\theta)=\dfrac{e^{-\theta}\theta^x}{x!},\ \ \ x=0,1...$$
+Tiene un único parámetro $\theta$ se suele denominar parámetro de intensidad, y se aplica sobre una variable aleatoria $X$.
 \section{Función generatriz de momentos}
+La función generatriz de momentos se define como sigue:
+$$\phi(t)=E[e^{-tX}]=\sum_{x=0}^{\inf}e^{-t x}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\inf}e^{t x}\frac{\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\inf}\frac{(\theta e^t)^x}{x!}=e^{-\theta}e^{\theta e^t}=e^{\theta(e^t-1)}$$
 \subsection{Esperanza}
+Para el calculo de la esperanza tan solo debemos derivar la función generatriz de momentos una vez y evaluarla con t=0:
+$$\frac{\partial\phi}{\partial t} = \theta e^t e^{\theta(e^t-1)}$$
+Evaluamos la expresión en t=0 y tenemos que:
+$$E[X]=\theta$$
 \subsection{Varianza}
+La varianza tiene se puede expresar como $\sigma^2=E[X^2]-E[X]^2$ por lo que es tan solo calcular, usando la función generatriz de momentos, el momento de orden 2 por lo que volvemos a derivar la expresión anterior:
+$$\frac{\partial^2\phi}{\partial t^2} = \theta e^t e^{\theta(e^t-1)}+\theta^2 e^{2t} e^{\theta(e^t-1)}$$
+Evaluamos la expresión en t=0 y tenemos que:
+$$E[X^2]=\theta+\theta^2$$
+Y por lo tanto la expresión de la varianza es la siguiente:
+$$\sigma^2=\theta+\theta^2-\theta^2=\theta$$
+
 \subsection{Familia exponencial}
 \section{EMV}
+
 \subsection{Consistencia}
 \subsection{Eficiencia}
 \subsection{Insesgadez}
