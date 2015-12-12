@@ -124,6 +124,8 @@ Lothar Soto Palma} % Author
 \usepackage{anysize}
 \marginsize{3cm}{3cm}{2.5cm}{2.5cm}
 
+\newcounter{def}
+
 \begin{document}
 \maketitle
 \tableofcontents
@@ -164,13 +166,31 @@ $$\sigma^2=\theta+\theta^2-\theta^2=\theta$$
 
 \subsection{Familia exponencial}
 \section{EMV}
+Para una muestra de tamaño $n$, que denotamos por $x=(x_1,...,x_n)$ definimos la función de verosimilitud como:
+$$l(x_1,...,x_n|\theta)=\prod_{i=1}^{n} \frac{e^{-\theta}\theta^{x_i}}{x_i!}=e^{-n\theta}\prod_{i=1}^{n} \frac{\theta^{x_i}}{x_i!}$$
+Para el cálculo del estimador máximo verosimil de la ley de Poisson vamos a maximizar la función $log(l(x_1,...,x_n|\theta))$ puesto que el logaritmo es monotona y conserva los máximos:
+$$L(x_1,...,x_n|\theta)=log(l(x_1,...,x_n|\theta))=-n\theta + \sum_{i=1}^{n}log(\frac{\theta^{x_i}}{x_i!})=-n\theta+ \sum_{i=1}^{n}(x_i log(\theta)-log(x_i!))$$
+Ahora calculamos la derivada para maximizar el logaritmo de la función de verosimilitud:
+$$\frac{\partial L}{\partial \theta}=-n+\sum_{i=1}^{n}\frac{x_i}{\theta}=-n+\frac{1}{\theta}\sum_{i=1}^{n}x_i$$
+Encontramos el extremo igualando a 0:
+$$-n+\frac{1}{\theta}\sum_{i=1}^{n}x_i=0 \Leftrightarrow \frac{1}{\theta}\sum_{i=1}^{n}x_i=n \Leftrightarrow \theta =\frac{\sum_{i=1}^{n}x_i}{n}$$
+Para verificar que hemos encontrado un máximo calculamos la segunda derivada y evaluamos en $\theta =\frac{\sum_{i=1}^{n}x_i}{n}$:
+$$\frac{\partial^2 L}{\partial \theta^2}=-\frac{1}{\theta^2}\sum_{i=1}^{n}x_i$$
 
-\subsection{Consistencia}
-\subsection{Eficiencia}
+$$\frac{\partial^2 L}{\partial \theta^2}(\frac{\sum_{i=1}^{n}x_i}{n})<0$$
 \subsection{Insesgadez}
-\subsection{Robustez}
+\addtocounter{def}{1}
+\emph{Definición \arabic{def}}: Se denomina sesgo de un estimador a la diferencia entre la esperanza del estimador y el verdadero valor del parámetro a estimar. Un estimador es insesgado si su sesgo es nulo por ser su esperanza igual al parámetro que se desea estimar.
+
+Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, para que el estimador $\hat{\theta}$ sea insesgado tenemos que probar que:
+$$E[\hat{\theta}]=\theta$$
+\textbf{Demostración}:
+$$E[\hat{\theta}]=E[\frac{1}{n}\sum_{i=1}^{n}x_i]=\frac{1}{n}\sum_{i=1}^{n}E[x_i]=\frac{1}{n}\sum_{i=1}^{n}\theta=\frac{n\theta}{n}=\theta$$
+\subsection{Eficiencia}
+\addtocounter{def}{1}
+\emph{Definición \arabic{def}}:
+\subsection{Consistencia}
 \subsection{Suficiencia}
-\subsection{Invarianza}
 \section{Ejemplos}
 \section{Referencias}
 \end{document}
