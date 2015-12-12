@@ -189,6 +189,17 @@ $$E[\hat{\theta}]=E[\frac{1}{n}\sum_{i=1}^{n}x_i]=\frac{1}{n}\sum_{i=1}^{n}E[x_i
 \subsection{Eficiencia}
 \addtocounter{def}{1}
 \emph{Definición \arabic{def}}:
+
+Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, para que el estimador $\hat{\theta}$ sea eficiente tenemos que probar que:
+$$Var(\hat{\theta})=\frac{1}{nI(\theta)}$$
+\textbf{Demostración}:
+Sea la función información de Fisher definida por 
+$$log(f(x|\theta))=-\theta + xlog(\theta) -log(x!)$$
+$$(\frac{\partial}{\partial\theta}log(f(x|\theta)))^2=(\frac{x-\theta}{\theta})^2$$
+$$I(\theta)=E[(\frac{\partial}{\partial\theta}log(f(x|\theta)))^2]=E[(\frac{x-\theta}{\theta})^2]=\frac{1}{\theta^2}E[(x-\theta)^2]=\frac{1}{\theta^2}Var(x)=\frac{\theta}{\theta^2}=\frac{1}{\theta}$$
+$$nI(\theta)=\frac{n}{\theta}$$
+$$Var(\hat{\theta})=Var(\frac{\sum_{i=1}^{n}x_i}{n})=\frac{1}{n^2}Var(\sum_{i=1}^{n}x_i)=\frac{n\theta}{n^2}=\frac{\theta}{n}$$
+Por lo que se verifica la condición de de eficiencia y el estimador es eficiente.
 \subsection{Consistencia}
 \subsection{Suficiencia}
 \section{Ejemplos}
