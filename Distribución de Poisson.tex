@@ -188,10 +188,11 @@ $$E[\hat{\theta}]=\theta$$
 $$E[\hat{\theta}]=E[\frac{1}{n}\sum_{i=1}^{n}x_i]=\frac{1}{n}\sum_{i=1}^{n}E[x_i]=\frac{1}{n}\sum_{i=1}^{n}\theta=\frac{n\theta}{n}=\theta$$
 \subsection{Eficiencia}
 \addtocounter{def}{1}
-\emph{Definición \arabic{def}}:
+\emph{Definición \arabic{def}}: Un estimador $\hat{\theta}_1$ se dice que es más eficiente que otro estimador $\hat{\theta}_2$, si la varianza del primero es menor que la del segundo $Var(\hat{\theta}_1)<Var(\hat{\theta}_2)$.
 
 Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, para que el estimador $\hat{\theta}$ sea eficiente tenemos que probar que:
 $$Var(\hat{\theta})=\frac{1}{nI(\theta)}$$
+Se verifica que el estimador tiene el mismo valor que la cota de Cramer-Rao.\\
 \textbf{Demostración}:
 Sea la función información de Fisher definida por 
 $$log(f(x|\theta))=-\theta + xlog(\theta) -log(x!)$$
