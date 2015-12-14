@@ -125,6 +125,8 @@ Lothar Soto Palma} % Author
 \marginsize{3cm}{3cm}{2.5cm}{2.5cm}
 
 \newcounter{def}
+\newcounter{teo}
+
 
 \begin{document}
 \maketitle
@@ -163,9 +165,7 @@ Evaluamos la expresión en t=0 y tenemos que:
 $$E[X^2]=\theta+\theta^2$$
 Y por lo tanto la expresión de la varianza es la siguiente:
 $$\sigma^2=\theta+\theta^2-\theta^2=\theta$$
-
-\subsection{Familia exponencial}
-\section{EMV}
+\section{Estimador máximo verosimil}
 Para una muestra de tamaño $n$, que denotamos por $x=(x_1,...,x_n)$ definimos la función de verosimilitud como:
 $$l(x_1,...,x_n|\theta)=\prod_{i=1}^{n} \frac{e^{-\theta}\theta^{x_i}}{x_i!}=e^{-n\theta}\prod_{i=1}^{n} \frac{\theta^{x_i}}{x_i!}$$
 Para el cálculo del estimador máximo verosimil de la ley de Poisson vamos a maximizar la función $log(l(x_1,...,x_n|\theta))$ puesto que el logaritmo es monotona y conserva los máximos:
@@ -176,7 +176,6 @@ Encontramos el extremo igualando a 0:
 $$-n+\frac{1}{\theta}\sum_{i=1}^{n}x_i=0 \Leftrightarrow \frac{1}{\theta}\sum_{i=1}^{n}x_i=n \Leftrightarrow \theta =\frac{\sum_{i=1}^{n}x_i}{n}$$
 Para verificar que hemos encontrado un máximo calculamos la segunda derivada y evaluamos en $\theta =\frac{\sum_{i=1}^{n}x_i}{n}$:
 $$\frac{\partial^2 L}{\partial \theta^2}=-\frac{1}{\theta^2}\sum_{i=1}^{n}x_i$$
-
 $$\frac{\partial^2 L}{\partial \theta^2}(\frac{\sum_{i=1}^{n}x_i}{n})<0$$
 \subsection{Insesgadez}
 \addtocounter{def}{1}
@@ -202,6 +201,17 @@ $$nI(\theta)=\frac{n}{\theta}$$
 $$Var(\hat{\theta})=Var(\frac{\sum_{i=1}^{n}x_i}{n})=\frac{1}{n^2}Var(\sum_{i=1}^{n}x_i)=\frac{n\theta}{n^2}=\frac{\theta}{n}$$
 Por lo que se verifica la condición de de eficiencia y el estimador es eficiente.
 \subsection{Consistencia}
+\addtocounter{teo}{1}
+\emph{Teorema \arabic{teo}}: Una condición suficiente para que $\hat{\theta}$ sea un estimador consistente es que dicho estimador tiene que verificar:
+\begin{description}
+\item $E[\hat{\theta}] \rightarrow \theta$
+\item $Var(\hat{\theta}) \rightarrow 0$
+\end{description}
+Con $n \rightarrow \infty$.
+
+Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, el estimador $\hat{\theta}$ es consistente ya que sabemos que dicho estimador es insesgado, y conocemos al valor de la varianza del mismo:
+$$E[\hat{\theta}]=\theta$$
+$$Var(\hat{\theta})=\frac{\theta}{n} \rightarrow_{P_\theta} 0, \ \ \ n\rightarrow \infty$$
 \subsection{Suficiencia}
 \section{Ejemplos}
 \section{Referencias}
