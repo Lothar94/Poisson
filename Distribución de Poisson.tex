@@ -213,6 +213,19 @@ Sea una variable aleatoria que sigue una distribución de Poisson de parametro $
 $$E[\hat{\theta}]=\theta$$
 $$Var(\hat{\theta})=\frac{\theta}{n} \rightarrow_{P_\theta} 0, \ \ \ n\rightarrow \infty$$
 \subsection{Suficiencia}
+\addtocounter{teo}{1}
+\emph{Teorema \arabic{teo}}: Sean $X_1, X_2, ..., X_n$ variables aleatorias independientes con una función distribución de distribución conjunta $f(x_1, x_2, ..., x_n | \theta)$ que depende del parámetro $\theta$. \\
+Entonces se dice que el estadístico $Y = u(x_1, ..., x_n)$ es suficiente para $\theta$ si y solamente si $f(x_1, x_2, ..., x_n | \theta)$ se puede factorizar de la siguiente forma: \\
+$$ f(x_1,...,x_n| \theta) = \Phi(u(x_1, ..., x_n) | \theta)\cdot h(x_1, ..., x_n) $$
+Veamos ahora que el estadístico \(T(X) = \sum_{i=0}^n x_i\) es un estadístico suficiente para el parámetro $\theta$ de la distribución de Poisson: \\
+Consideremos en primer lugar la probabilidad conjunta de la distribución:
+$$P(X=x) = P(X_1 = x_1, X_2 = x_2, ..., X_n = x_n) $$
+Teniendo en cuenta que en nuestra distribución de Poisson se tiene que: \(P(X=k) = \frac{e^{-\theta }\theta ^{k}}{k!}\) y que las observaciones son independientes podemos reescribirlo como:
+$$P(X=x) = \prod_{i=0}^nP(X_i = x_i) = \frac{e^{-\theta }\theta ^{x_1}}{x_1!}\cdot \frac{e^{-\theta }\theta ^{x_2}}{x_2!}\cdot ... \cdot \frac{e^{-\theta }\theta ^{x_n}}{x_n!}$$
+Simplificando tenemos:
+$$f(x_1...x_n | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{\sum_{i=0}^nx_i} \frac{1}{\prod_{i=1}^nx_i!}$$
+Donde vemos que hemos conseguido factorizar $f(x_1...x_n | \theta)$ como en el teorema; en nuestro caso $u(X) = T(X) = \sum_{i_0}^n x_i$ y $h(X) =  \frac{1}{\prod_{i=1}^nx_i!}$
+
 \section{Ejemplos}
 \section{Referencias}
 \end{document}
