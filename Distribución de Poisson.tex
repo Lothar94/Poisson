@@ -235,7 +235,17 @@ Teniendo en cuenta que en nuestra distribución de Poisson se tiene que: \(P(X=k
 $$P(X=x) = \prod_{i=0}^nP(X_i = x_i) = \frac{e^{-\theta }\theta ^{x_1}}{x_1!}\cdot \frac{e^{-\theta }\theta ^{x_2}}{x_2!}\cdot ... \cdot \frac{e^{-\theta }\theta ^{x_n}}{x_n!}$$
 Simplificando tenemos:
 $$f(x_1...x_n | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{\sum_{i=0}^nx_i} \frac{1}{\prod_{i=1}^nx_i!}$$
-Donde vemos que hemos conseguido factorizar $f(x_1...x_n | \theta)$ como en el teorema; en nuestro caso $u(X) = T(X) = \sum_{i_0}^n x_i$ y $h(X) =  \frac{1}{\prod_{i=1}^nx_i!}$
+Donde vemos que hemos conseguido factorizar $f(x_1...x_n | \theta)$ como en el teorema; en nuestro caso $u(X) = T(X) = \sum_{i_0}^n x_i$ y $h(X) =  \frac{1}{\prod_{i=1}^nx_i!}$\\
+Para finalizar conviene resaltar que hemos probado que el estadístico $T(X)$ es suficiente para $\theta$, pero nosotros lo que queremos es ver que $\hat{\theta}$ es suficiente para $\theta$.\\
+Pero esto es trivial ya que $\hat{\theta} = \frac{1}{n}\sum_{i=0}^n = \frac{1}{n}T(X)$ y podemos encontrar una nueva función $\hat u(x_1,...,x_n)$ tal que:
+$$f(x_1...x_n | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n}\theta ^{\frac{1}{n}{\sum_{i=0}^nx_i}} \frac{1}{\prod_{i=1}^nx_i!}$$ 
+Que cumple el esquema: \\
+$$ f(x_1,...,x_n| \theta) = \Phi(u(\hat\theta) | \theta)\cdot h(x_1, ..., x_n) $$
+
+Donde: $\Phi(u(\hat\theta) | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n}\theta ^{\frac{1}{n}{\sum_{i=0}^nx_i}}$ \\
+Y $h(x_1, ..., x_n) = \frac{1}{\prod_{i=1}^nx_i!}$
+
+
 
 \section{Ejemplos}
 \section{Referencias}
