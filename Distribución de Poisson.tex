@@ -134,23 +134,29 @@ Lothar Soto Palma} % Author
 \setcounter{page}{1}
 \pagebreak
 \section{Deducción de función de densidad}
-La distribución de Poisson expresa a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto periodo de tiempo. Se especializa en la probabilidad de ocurrencia de sucesos con probabilidades pequeñas. Es una distribución que sirve para modelar diferentes tipos de experimentos, como fenómenosen los que se espera que ocurra un suceso en específico como esperar el bus, o la llegada de clientes en deternimado servicio.
+La distribución de Poisson expresa a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto periodo de tiempo. Se especializa en la probabilidad de ocurrencia de sucesos con probabilidades pequeñas. Es una distribución que sirve para modelar diferentes tipos de experimentos, como fenómenos en los que se espera que ocurra un suceso en específico como esperar el bus, o la llegada de clientes en deternimado servicio.
 
 La distribución de Poisson es un caso particular del limite de la distribución binomial, podemos deducirlo de la siguiente representación geométrica:\\
 \begin{center}
 \includegraphics[scale=0.6]{1.png} 
 \end{center}
-Tomamos $AB$ como el segmento de longitud $L$ y $CD$ el segmento de longitud $l$ contenido en $AB$, la probabilidad de que un punto se encuentre en $CD$ es $l/L$. Sitomamos n puntos aleatorios en $AB$ la probabilidad de que exactamente $x$ de ellos esten en $CD$ viene dada por una distribución binomial:
+Tomamos $AB$ como el segmento de longitud $L$ y $CD$ el segmento de longitud $l$ contenido en $AB$, la probabilidad de que un punto se encuentre en $CD$ es $l/L$. Si tomamos n puntos aleatorios en $AB$ la probabilidad de que exactamente $x$ de ellos esten en $CD$ viene dada por una distribución binomial:
 $$B(x|\frac{l}{L},n)=\frac{n!}{x!(n-x)!}(\frac{l}{L})^x(1-\frac{l}{L})^{n-x}$$
-n y L crecen indefinidamente de tal manera que el número promedio de puntos por unidad de longitud es un número finito $k \neq 0$, $\frac{n}{L}\rightarrow k$.
+Ahora hacemos que n y L crezcan indefinidamente de tal manera que el número promedio de puntos por unidad de longitud es un número finito $k \neq 0$, $\frac{n}{L}\rightarrow k$.
 $$B(x|\frac{l}{L},n)=\frac{n(n-1)...(n-x+1)}{x!n^x}(\frac{nl}{L})^x(1-\frac{n}{L}\frac{l}{n})^{n-x}$$
 asi que el limite de $B(x|\frac{l}{L},n)$ cuando $n,L\rightarrow \infty$:
-$$\lim_{n,L\rightarrow \infty}B(x|\frac{l}{L},n) = \lim_{n,L\rightarrow \infty}\frac{1(1-\frac{1}{n})...(1-x+1\frac{x+1}{n})}{x!}(\frac{nl}{L})^x(1-\frac{n}{L}\frac{l}{n})^{n-x}=\frac{(kl)^xe^{-kl}}{x!}$$
+$$\lim_{n,L\rightarrow \infty}B(x|\frac{l}{L},n) = \lim_{n,L\rightarrow \infty}\frac{1(1-\frac{1}{n})...(1-\frac{x+1}{n})}{x!}(\frac{nl}{L})^x(1-\frac{n}{L}\frac{l}{n})^{n-x}=\frac{(kl)^xe^{-kl}}{x!}$$
 Tomando que $kl=\theta$ obtenemos la expresión de la distribución de Poisson:
 $$Poisson(\theta)=f(x|\theta)=\dfrac{e^{-\theta}\theta^x}{x!},\ \ \ x=0,1...$$
 Tiene un único parámetro $\theta$ se suele denominar parámetro de intensidad, y se aplica sobre una variable aleatoria $X$.
+
+Es interesante conocer previamente el desarrollo en serie de Taylor para $e^x$, ya que este desarrollo se usará por ejemplo en el cálculo de la función generatriz de momentos o en ver la buena definición de la función de densidad, tenemos que es $e^x=\sum_{i=0}^{\infty}\frac{x^i}{i!}$.
+
+La función de densidad está bién definida consideramos la suma de todos los experimentos x:
+$$\sum_{x=0}^{\infty}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}\frac{\theta^x}{x!}=e^{-\theta}e^{\theta}=1$$
 \section{Función generatriz de momentos}
-Para definir la función generatriz de momentos es importante ver que se verifica que $e^x=\sum_{i=0}^{\infty}\frac{x^i}{i!}$ es la serie de Taylor para $e^x$.
+
+
 La función generatriz de momentos se define como sigue:
 $$\phi(t)=E[e^{-tX}]=\sum_{x=0}^{\infty}e^{-t x}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}e^{t x}\frac{\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}\frac{(\theta e^t)^x}{x!}=e^{-\theta}e^{\theta e^t}=e^{\theta(e^t-1)}$$
 \subsection{Esperanza}
@@ -159,7 +165,7 @@ $$\frac{\partial\phi}{\partial t} = \theta e^t e^{\theta(e^t-1)}$$
 Evaluamos la expresión en t=0 y tenemos que:
 $$E[X]=\theta$$
 \subsection{Varianza}
-La varianza tiene se puede expresar como $\sigma^2=E[X^2]-E[X]^2$ por lo que es tan solo calcular, usando la función generatriz de momentos, el momento de orden 2 por lo que volvemos a derivar la expresión anterior:
+La varianza se puede expresar como $\sigma^2=E[X^2]-E[X]^2$ por lo que es tan solo calcular el momento de orden 2 usando la función generatriz de momentos, por lo que volvemos a derivar la expresión anterior:
 $$\frac{\partial^2\phi}{\partial t^2} = \theta e^t e^{\theta(e^t-1)}+\theta^2 e^{2t} e^{\theta(e^t-1)}$$
 Evaluamos la expresión en t=0 y tenemos que:
 $$E[X^2]=\theta+\theta^2$$
@@ -168,7 +174,7 @@ $$\sigma^2=\theta+\theta^2-\theta^2=\theta$$
 \section{Estimador máximo verosimil}
 Para una muestra de tamaño $n$, que denotamos por $x=(x_1,...,x_n)$ definimos la función de verosimilitud como:
 $$l(x_1,...,x_n|\theta)=\prod_{i=1}^{n} \frac{e^{-\theta}\theta^{x_i}}{x_i!}=e^{-n\theta}\prod_{i=1}^{n} \frac{\theta^{x_i}}{x_i!}$$
-Para el cálculo del estimador máximo verosimil de la ley de Poisson vamos a maximizar la función $log(l(x_1,...,x_n|\theta))$ puesto que el logaritmo es monotona y conserva los máximos:
+Para el cálculo del estimador máximo verosimil de la ley de Poisson vamos a maximizar la función $log(l(x_1,...,x_n|\theta))$ puesto que el logaritmo es creciente conserva los máximos:
 $$L(x_1,...,x_n|\theta)=log(l(x_1,...,x_n|\theta))=-n\theta + \sum_{i=1}^{n}log(\frac{\theta^{x_i}}{x_i!})=-n\theta+ \sum_{i=1}^{n}(x_i log(\theta)-log(x_i!))$$
 Ahora calculamos la derivada para maximizar el logaritmo de la función de verosimilitud:
 $$\frac{\partial L}{\partial \theta}=-n+\sum_{i=1}^{n}\frac{x_i}{\theta}=-n+\frac{1}{\theta}\sum_{i=1}^{n}x_i$$
@@ -177,6 +183,7 @@ $$-n+\frac{1}{\theta}\sum_{i=1}^{n}x_i=0 \Leftrightarrow \frac{1}{\theta}\sum_{i
 Para verificar que hemos encontrado un máximo calculamos la segunda derivada y evaluamos en $\theta =\frac{\sum_{i=1}^{n}x_i}{n}$:
 $$\frac{\partial^2 L}{\partial \theta^2}=-\frac{1}{\theta^2}\sum_{i=1}^{n}x_i$$
 $$\frac{\partial^2 L}{\partial \theta^2}(\frac{\sum_{i=1}^{n}x_i}{n})<0$$
+Se tiene que la segunda derivada es negativa ya que la suma de variables $x_i$ es siempre positiva y $\theta$ está elevado al cuadrado por lo que siempre es positiva, por lo que no hay ningún valor que haga positiva la segunda derivada y por tanto $\hat{\theta}=\frac{\sum_{i=1}^{n}x_i}{n}$ es un estimador máximo verosimil para la ley de Poisson.
 \subsection{Insesgadez}
 \addtocounter{def}{1}
 \emph{Definición \arabic{def}}: Se denomina sesgo de un estimador a la diferencia entre la esperanza del estimador y el verdadero valor del parámetro a estimar. Un estimador es insesgado si su sesgo es nulo por ser su esperanza igual al parámetro que se desea estimar.
@@ -193,11 +200,15 @@ Sea una variable aleatoria que sigue una distribución de Poisson de parametro $
 $$Var(\hat{\theta})=\frac{1}{nI(\theta)}$$
 Se verifica que el estimador tiene el mismo valor que la cota de Cramer-Rao.\\
 \textbf{Demostración}:
-Sea la función información de Fisher definida por 
+Calculamos la función información de Fisher para ello en primer lugar veamos cual es el valor del logaritmo de la función de densidad: 
 $$log(f(x|\theta))=-\theta + xlog(\theta) -log(x!)$$
+Derivamos y elevamos al cuadrado previamente para el calculo de la información de Fisher:
 $$(\frac{\partial}{\partial\theta}log(f(x|\theta)))^2=(\frac{x-\theta}{\theta})^2$$
+Calculamos la esperanza de lo anterior:
 $$I(\theta)=E[(\frac{\partial}{\partial\theta}log(f(x|\theta)))^2]=E[(\frac{x-\theta}{\theta})^2]=\frac{1}{\theta^2}E[(x-\theta)^2]=\frac{1}{\theta^2}Var(x)=\frac{\theta}{\theta^2}=\frac{1}{\theta}$$
+Puesto que tenemos $n$ experimentos:
 $$nI(\theta)=\frac{n}{\theta}$$
+Calculamos la varianza del estimador para ver si coincide con la información de Fisher:
 $$Var(\hat{\theta})=Var(\frac{\sum_{i=1}^{n}x_i}{n})=\frac{1}{n^2}Var(\sum_{i=1}^{n}x_i)=\frac{n\theta}{n^2}=\frac{\theta}{n}$$
 Por lo que se verifica la condición de de eficiencia y el estimador es eficiente.
 \subsection{Consistencia}
