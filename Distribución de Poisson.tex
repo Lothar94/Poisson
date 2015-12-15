@@ -245,8 +245,25 @@ $$ f(x_1,...,x_n| \theta) = \Phi(u(\hat\theta) | \theta)\cdot h(x_1, ..., x_n) $
 Donde: $\Phi(u(\hat\theta) | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n}\theta ^{\frac{1}{n}{\sum_{i=0}^nx_i}}$ \\
 Y $h(x_1, ..., x_n) = \frac{1}{\prod_{i=1}^nx_i!}$
 
-
-
 \section{Ejemplos}
+\textbf{Calcular el número de particulas $\alpha$ emitidas en una fuente radiactiva: \\
+}Experimentalmente se obtiene que el numero medio de particulas $\alpha$ emitidas en dos minutos es 3.
+¿Cual es la probabilidad de que en los próximos dos minutos el número de partículas $\alpha$ sea 0, 1, 2, 3 ó 4?\\
+¿Y de que sea mayor o igual que cinco?\\
+\textbf{Solución:}\\
+La probabilidad de que $x$ partículas se emitan en un periodo de dos minutos se puede modelar mediante una función de distribución de Poisson:
+$$ P_{\mu}(x) =\frac{\mu^x}{x!}e^{-\mu} $$
+Donde $\mu$ es el valor promedio de particulas emitido en dos minutos.\\
+En nuestro caso $\mu = 1.5\cdot2 = 3$ 
+Calculemos ahora $P_{\mu}(i)$ para $i=0,1,2,3,4$\\
+$$P_{\mu}(0) = \frac{3^0}{0!}e^{-3} = e^{-3} = 0.05 $$
+$$P_{\mu}(1) = \frac{3^1}{1!}e^{-3} = 3e^{-3} = 0.15 $$
+$$P_{\mu}(2) = \frac{3^2}{2!}e^{-3} = \frac{9}{2}e^{-3} = 0.22 $$
+$$P_{\mu}(3) = \frac{3^3}{3!}e^{-3} = \frac{9}{2}e^{-3} = 0.22 $$
+$$P_{\mu}(4) = \frac{3^4}{4!}e^{-3} = \frac{9}{2}e^{-3} = 0.17 $$
+$$\sum_{i=5}^{+\infty}P_{\mu}(i) = \sum_{i=5}^{+\infty}\frac{3^i}{i!}e^{-3} = \sum_{i=0}^{+\infty}\frac{3^i}{i!}e^{-3} - \sum_{i=0}^{5}\frac{3^i}{i!}e^{-3} = e^3e^{-3} - \sum_{i=0}^{5}\frac{3^i}{i!}e^{-3} = 1 - 0.05 - 0.15 - 0.22 - 0.22 - 0.17 = 0.19$$
+
+
+
 \section{Referencias}
 \end{document}
