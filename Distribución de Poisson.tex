@@ -152,7 +152,7 @@ Tiene un único parámetro $\theta$ se suele denominar parámetro de intensidad,
 
 Es interesante conocer previamente el desarrollo en serie de Taylor para $e^x$, ya que este desarrollo se usará por ejemplo en el cálculo de la función generatriz de momentos o en ver la buena definición de la función de densidad, tenemos que es $e^x=\sum_{i=0}^{\infty}\frac{x^i}{i!}$.
 
-La función de densidad está bién definida consideramos la suma de todos los experimentos x:
+La función de densidad está bien definida consideramos la suma de todos los experimentos x:
 $$\sum_{x=0}^{\infty}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}\frac{\theta^x}{x!}=e^{-\theta}e^{\theta}=1$$
 \section{Función generatriz de momentos}
 
@@ -160,7 +160,7 @@ $$\sum_{x=0}^{\infty}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\inft
 La función generatriz de momentos se define como sigue:
 $$\phi(t)=E[e^{-tX}]=\sum_{x=0}^{\infty}e^{-t x}\frac{e^{-\theta}\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}e^{t x}\frac{\theta^x}{x!}=e^{-\theta}\sum_{x=0}^{\infty}\frac{(\theta e^t)^x}{x!}=e^{-\theta}e^{\theta e^t}=e^{\theta(e^t-1)}$$
 \subsection{Esperanza}
-Para el calculo de la esperanza tan solo debemos derivar la función generatriz de momentos una vez y evaluarla con t=0:
+Para el cálculo de la esperanza tan solo debemos derivar la función generatriz de momentos una vez y evaluarla con t=0:
 $$\frac{\partial\phi}{\partial t} = \theta e^t e^{\theta(e^t-1)}$$
 Evaluamos la expresión en t=0 y tenemos que:
 $$E[X]=\theta$$
@@ -188,7 +188,7 @@ Se tiene que la segunda derivada es negativa ya que la suma de variables $x_i$ e
 \addtocounter{def}{1}
 \emph{Definición \arabic{def}}: Se denomina sesgo de un estimador a la diferencia entre la esperanza del estimador y el verdadero valor del parámetro a estimar. Un estimador es insesgado si su sesgo es nulo por ser su esperanza igual al parámetro que se desea estimar.
 
-Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, para que el estimador $\hat{\theta}$ sea insesgado tenemos que probar que:
+Sean n experimentos $x=(x_1,...x_n)$ independientes que siguen una distribución de Poisson de parámetro $\theta$, para que el estimador $\hat{\theta}$ sea insesgado tenemos que probar que:
 $$E[\hat{\theta}]=\theta$$
 \textbf{Demostración}:
 $$E[\hat{\theta}]=E[\frac{1}{n}\sum_{i=1}^{n}x_i]=\frac{1}{n}\sum_{i=1}^{n}E[x_i]=\frac{1}{n}\sum_{i=1}^{n}\theta=\frac{n\theta}{n}=\theta$$
@@ -196,20 +196,20 @@ $$E[\hat{\theta}]=E[\frac{1}{n}\sum_{i=1}^{n}x_i]=\frac{1}{n}\sum_{i=1}^{n}E[x_i
 \addtocounter{def}{1}
 \emph{Definición \arabic{def}}: Un estimador $\hat{\theta}_1$ se dice que es más eficiente que otro estimador $\hat{\theta}_2$, si la varianza del primero es menor que la del segundo $Var(\hat{\theta}_1)<Var(\hat{\theta}_2)$.
 
-Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, para que el estimador $\hat{\theta}$ sea eficiente tenemos que probar que:
+Sean n experimentos $x=(x_1,...x_n)$ independientes que siguen una distribución de Poisson de parámetro $\theta$, para que el estimador $\hat{\theta}$ sea eficiente tenemos que probar que:
 $$Var(\hat{\theta})=\frac{1}{nI(\theta)}$$
-Se verifica que el estimador tiene el mismo valor que la cota de Cramer-Rao.\\
+Se verifica que la varianza del estimador alcanza la cota de Cramér-Rao.\\
 \textbf{Demostración}:
 Calculamos la función información de Fisher para ello en primer lugar veamos cual es el valor del logaritmo de la función de densidad: 
 $$log(f(x|\theta))=-\theta + xlog(\theta) -log(x!)$$
-Derivamos y elevamos al cuadrado previamente para el calculo de la información de Fisher:
+Derivamos y elevamos al cuadrado previamente para el cálculo de la información de Fisher:
 $$(\frac{\partial}{\partial\theta}log(f(x|\theta)))^2=(\frac{x-\theta}{\theta})^2$$
 Calculamos la esperanza de lo anterior:
 $$I(\theta)=E[(\frac{\partial}{\partial\theta}log(f(x|\theta)))^2]=E[(\frac{x-\theta}{\theta})^2]=\frac{1}{\theta^2}E[(x-\theta)^2]=\frac{1}{\theta^2}Var(x)=\frac{\theta}{\theta^2}=\frac{1}{\theta}$$
 Puesto que tenemos $n$ experimentos:
 $$nI(\theta)=\frac{n}{\theta}$$
 Calculamos la varianza del estimador para ver si coincide con la información de Fisher:
-$$Var(\hat{\theta})=Var(\frac{\sum_{i=1}^{n}x_i}{n})=\frac{1}{n^2}Var(\sum_{i=1}^{n}x_i)=\frac{n\theta}{n^2}=\frac{\theta}{n}$$
+$$Var(\hat{\theta})=Var(\frac{\sum_{i=1}^{n}x_i}{n})=\frac{1}{n^2}Var(\sum_{i=1}^{n}x_i)=\frac{1}{n^2}\sum_{i=1}^{n}Var(x_i)=\frac{n\theta}{n^2}=\frac{\theta}{n}$$
 Por lo que se verifica la condición de de eficiencia y el estimador es eficiente.
 \subsection{Consistencia}
 \addtocounter{teo}{1}
@@ -220,29 +220,29 @@ Por lo que se verifica la condición de de eficiencia y el estimador es eficient
 \end{description}
 Con $n \rightarrow \infty$.
 
-Sea una variable aleatoria que sigue una distribución de Poisson de parametro $\theta$ y consideramos n pruebas $x=(x_1,...x_n)$, el estimador $\hat{\theta}$ es consistente ya que sabemos que dicho estimador es insesgado, y conocemos al valor de la varianza del mismo:
+Sean n experimentos $x=(x_1,...x_n)$ independientes que siguen una distribución de Poisson de parámetro $\theta$, el estimador $\hat{\theta}$ es consistente ya que sabemos que dicho estimador es insesgado, y conocemos al valor de la varianza del mismo:
 $$E[\hat{\theta}]=\theta$$
 $$Var(\hat{\theta})=\frac{\theta}{n} \rightarrow_{P_\theta} 0, \ \ \ n\rightarrow \infty$$
 \subsection{Suficiencia}
 \addtocounter{teo}{1}
 \emph{Teorema \arabic{teo}}: Sean $X_1, X_2, ..., X_n$ variables aleatorias independientes con una función distribución de distribución conjunta $f(x_1, x_2, ..., x_n | \theta)$ que depende del parámetro $\theta$. \\
-Entonces se dice que el estadístico $Y = u(x_1, ..., x_n)$ es suficiente para $\theta$ si y solamente si $f(x_1, x_2, ..., x_n | \theta)$ se puede factorizar de la siguiente forma: \\
+Entonces se dice que el estadístico $u(x_1, ..., x_n)$ es suficiente para $\theta$ si y solamente si $f(x_1, x_2, ..., x_n | \theta)$ se puede factorizar de la siguiente forma: \\
 $$ f(x_1,...,x_n| \theta) = \Phi(u(x_1, ..., x_n) | \theta)\cdot h(x_1, ..., x_n) $$
-Veamos ahora que el estadístico \(T(X) = \sum_{i=0}^n x_i\) es un estadístico suficiente para el parámetro $\theta$ de la distribución de Poisson: \\
+Veamos ahora que el estadístico \(T(X) =\sum_{i=1}^n x_i\) es un estadístico suficiente para el parámetro $\theta$ de la distribución de Poisson: \\
 Consideremos en primer lugar la probabilidad conjunta de la distribución:
 $$P(X=x) = P(X_1 = x_1, X_2 = x_2, ..., X_n = x_n) $$
 Teniendo en cuenta que en nuestra distribución de Poisson se tiene que: \(P(X=k) = \frac{e^{-\theta }\theta ^{k}}{k!}\) y que las observaciones son independientes podemos reescribirlo como:
-$$P(X=x) = \prod_{i=0}^nP(X_i = x_i) = \frac{e^{-\theta }\theta ^{x_1}}{x_1!}\cdot \frac{e^{-\theta }\theta ^{x_2}}{x_2!}\cdot ... \cdot \frac{e^{-\theta }\theta ^{x_n}}{x_n!}$$
+$$P(X=x) = \prod_{i=1}^nP(X_i = x_i) = \frac{e^{-\theta }\theta ^{x_1}}{x_1!}\cdot \frac{e^{-\theta }\theta ^{x_2}}{x_2!}\cdot ... \cdot \frac{e^{-\theta }\theta ^{x_n}}{x_n!}$$
 Simplificando tenemos:
-$$f(x_1...x_n | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{\sum_{i=0}^nx_i} \frac{1}{\prod_{i=1}^nx_i!}$$
-Donde vemos que hemos conseguido factorizar $f(x_1...x_n | \theta)$ como en el teorema; en nuestro caso $u(X) = T(X) = \sum_{i_0}^n x_i$ y $h(X) =  \frac{1}{\prod_{i=1}^nx_i!}$\\
+$$f(x_1...x_n | \theta) = \prod_{i=1}^nP(X_i = x_i) = e^{-n\theta }\theta ^{\sum_{i=1}^nx_i} \frac{1}{\prod_{i=1}^nx_i!}$$
+Donde vemos que hemos conseguido factorizar $f(x_1...x_n | \theta)$ como en el teorema; en nuestro caso $u(X) = T(X) = \sum_{i=1}^n x_i$ y $h(X) =  \frac{1}{\prod_{i=1}^nx_i!}$\\
 Para finalizar conviene resaltar que hemos probado que el estadístico $T(X)$ es suficiente para $\theta$, pero nosotros lo que queremos es ver que $\hat{\theta}$ es suficiente para $\theta$.\\
-Pero esto es trivial ya que $\hat{\theta} = \frac{1}{n}\sum_{i=0}^n = \frac{1}{n}T(X)$ y podemos encontrar una nueva función $\hat u(x_1,...,x_n)$ tal que:
-$$f(x_1...x_n | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n}\theta ^{\frac{1}{n}{\sum_{i=0}^nx_i}} \frac{1}{\prod_{i=1}^nx_i!}$$ 
+Pero esto es trivial ya que $\hat{\theta} = \frac{1}{n}\sum_{i=1}^n x_i= \frac{1}{n}T(X)$ y podemos encontrar una nueva función $\hat u(x_1,...,x_n)$ tal que:
+$$f(x_1...x_n | \theta) = \prod_{i=1}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n\frac{\sum_{i=1}^nx_i}{n}} \frac{1}{\prod_{i=1}^nx_i!}$$ 
 Que cumple el esquema: \\
 $$ f(x_1,...,x_n| \theta) = \Phi(u(\hat\theta) | \theta)\cdot h(x_1, ..., x_n) $$
 
-Donde: $\Phi(u(\hat\theta) | \theta) = \prod_{i=0}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n}\theta ^{\frac{1}{n}{\sum_{i=0}^nx_i}}$ \\
+Donde: $\Phi(u(\hat\theta) | \theta) = \prod_{i=1}^nP(X_i = x_i) = e^{-n\theta }\theta ^{n\frac{\sum_{i=1}^nx_i}{n}}$ \\
 Y $h(x_1, ..., x_n) = \frac{1}{\prod_{i=1}^nx_i!}$
 
 \section{Ejemplos}
@@ -262,8 +262,4 @@ $$P_{\mu}(2) = \frac{3^2}{2!}e^{-3} = \frac{9}{2}e^{-3} = 0.22 $$
 $$P_{\mu}(3) = \frac{3^3}{3!}e^{-3} = \frac{9}{2}e^{-3} = 0.22 $$
 $$P_{\mu}(4) = \frac{3^4}{4!}e^{-3} = \frac{9}{2}e^{-3} = 0.17 $$
 $$\sum_{i=5}^{+\infty}P_{\mu}(i) = \sum_{i=5}^{+\infty}\frac{3^i}{i!}e^{-3} = \sum_{i=0}^{+\infty}\frac{3^i}{i!}e^{-3} - \sum_{i=0}^{5}\frac{3^i}{i!}e^{-3} = e^3e^{-3} - \sum_{i=0}^{5}\frac{3^i}{i!}e^{-3} = 1 - 0.05 - 0.15 - 0.22 - 0.22 - 0.17 = 0.19$$
-
-
-
-\section{Referencias}
 \end{document}
